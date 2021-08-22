@@ -91,21 +91,21 @@ App = {
             $newTaskTemplate.show();
         }
     },
-    toggleCompleted: () => {
+    toggleCompleted: async(event) => {
+        App.setLoading(true);
+        const taskId = event.target.name;
+        await App.todoList.toggleCompleted(taskId);
+        window.location.reload();
 
     },
     createTask: async() => {
         try {
             App.setLoading(true);
             const content = $('#newTask').val();
-            // await App.todoList.createTask(content);
-            // await App.loadContract();
-            // await App.render();
+            await App.todoList.createTask(content);
             window.location.reload();
-            // App.setLoading(false);    
         } catch (error) {
             console.log(error);
-            //console.log(error.)
         }
         
     }
