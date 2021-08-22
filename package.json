@@ -4,7 +4,7 @@
     "description": "Blockchain simple todo list powered by ethereum",
     "main": "truffle-config.js",
     "directories": {
-        "test":"test"
+        "test": "test"
     },
     "scripts": {
         "dev": "lite-server"
@@ -20,5 +20,8 @@
         "nodemon": "^1.17.3",
         "truffle": "5.0.2",
         "truffle-contract": "3.0.6"
+    },
+    "dependencies": {
+        "web3": "^0.20.7"
     }
 }
