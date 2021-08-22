@@ -40,6 +40,7 @@ App = {
     },
     loadAccount: async () => {
         App.account = web3.eth.accounts[0];
+        web3.eth.defaultAccount = web3.eth.accounts[0];
     },
     loadContract: async () => {
         const todoList = await $.getJSON('TodoList.json');
@@ -78,7 +79,7 @@ App = {
             const taskStatus =  task[2];
             const $newTaskTemplate = $taskTemplate.clone();
             $newTaskTemplate.find('.content').html(taskContent);
-            $newTaskTemplate.find('.input')
+            $newTaskTemplate.find('input')
                 .prop('name', taskId)
                 .prop('checked', taskStatus)
                 .on('click', App.toggleCompleted);
@@ -92,6 +93,21 @@ App = {
     },
     toggleCompleted: () => {
 
+    },
+    createTask: async() => {
+        try {
+            App.setLoading(true);
+            const content = $('#newTask').val();
+            // await App.todoList.createTask(content);
+            // await App.loadContract();
+            // await App.render();
+            window.location.reload();
+            // App.setLoading(false);    
+        } catch (error) {
+            console.log(error);
+            //console.log(error.)
+        }
+        
     }
 }
 $(() => {
